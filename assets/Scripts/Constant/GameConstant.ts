@@ -19,6 +19,11 @@ const Game_Event={
     One_Card_Selected:"One_Card_Selected"
 
 }
+const Position_Array=[
+    0,-75,-150,-225
+]
+
+
 
  function randomNumberGenerator(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -31,5 +36,6 @@ Card_Per_Color_Type,
 Card_Position_Diff,
 ColorValue,
 Game_Event,
+Position_Array,
 randomNumberGenerator
 }

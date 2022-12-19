@@ -79,8 +79,20 @@ console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
         console.log("fsjldfsjdfksjfdklfdfkjsfsld");
         
         this.selectedCardArrayScripRef[index].cardSelect(false);  
-        block.AddCard(this.selectedCardArray[index]);
-        await  this.selectedCardArrayScripRef[index].moveCard(0,-560) 
+      //  block.AddCard(this.selectedCardArray[index]);
+      console.log("data.data.parent:Container",data.data);
+      
+        this.selectedCardArray[index].parent=data.data;
+        data.data.getComponent(Layout).enabled=false;
+        let childCount=data.data.children.length-1;
+        console.log("blank : ",data.data.children.length-1);
+        
+        let targetPosition=childCount*(-75);
+        console.log("taget: ",targetPosition)
+        this.selectedCardArray[index].setPosition(0,GameConst.Position_Array[childCount],0)
+    //    await  this.selectedCardArrayScripRef[index].moveCard(0,GameConst.Position_Array[childCount],0) //(childCount)*225-(300*childCount)
+      //  data.data.getComponent(Layout).enabled=true;
+
      }
       this.selectedCardArray=[]
       this.selectedCardArrayScripRef=[]
@@ -107,9 +119,15 @@ for (let index = 0; index < this.selectedCardArray.length; index++) {
      this.selectedCardArray[index].parent=  data.data[0].parent//(this.selectedCardArray[index]);
      data.data[0].parent.getComponent(Layout).enabled=false;
      console.log("data.data[0].parent.children.length-1*-75",data.data[0].parent.children.length-1*-75);
+     console.log("data.data[0].parent.-1*-75",data.data[0].parent.children.length-1);
+     let childCount=data.data[0].parent.children.length-1;
+     let targetPosition=childCount*(-75);
+     console.log("posiont infsdffdfs : ",targetPosition);
      
-     await this.selectedCardArrayScripRef[index].moveCard(new Vec3( 0,data.data[0].parent.children.length-1*-75,0));
-     data.data[0].parent.getComponent(Layout).enabled=true;
+     data.data[0].parent.getComponent(Layout).enabled=false;
+     this.selectedCardArray[index].setPosition(0,GameConst.Position_Array[childCount],0)
+
+    // await this.selectedCardArrayScripRef[index].moveCard(new Vec3( 0,GameConst.Position_Array[childCount],0));//(childCount-1)*225-(300*childCount)
 
      this.selectedCardArrayScripRef[index].cardSelect(false);      
    }else{

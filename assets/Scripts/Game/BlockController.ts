@@ -13,7 +13,6 @@ export class BlockController extends Component {
 
   onLoad() {
     this.node.on(Node.EventType.TOUCH_END, this.touchEnd, this);
-    window.EventEmitter.on(GameConst.Game_Event.Block_Click,this.blockClicked ,this)
   }
 
   touchEnd(event) {
@@ -51,52 +50,17 @@ export class BlockController extends Component {
        
         else{
         let data = {
-          data: this,
+          data: this.node,
           isCard: false,
         };
             window.EventEmitter.emit('Card_Select',data,this);
-
         }
-        
-
-    // } 
-    // if(this.touchCount==2){
-    //     if(this.node.children.length>0)return;
-    //     let lastChild=this.node.children[this.node.children.length-1];
-    //     let sameCount=0
-    //     for (let index = this.node.children.length-1; index > 0; index--) {
-    //         //const element = ;
-    //         this.sameColorArray.push(this.node.children[index]);
-    //      if( this.node.children[index].getComponent(Card).cardColor== this.node.children[index-1].getComponent(Card).cardColor){
-    //         console.log("two element is same  :");
-            
-    //         sameCount=1;
-    //         this.sameColorArray.push(this.node.children[index-1]);
-    //     }else{
-    //     //window.EventEmitter.emit('Card_Select',lastChild ,this);
-    //     this.node.children[index].getComponent(Card).cardSelect(false);
-    //         break;
-    //     }
-    // }
-    // if(this.sameColorArray.length>1){
-    //     window.EventEmitter.emit('Card_Select', this.sameColorArray,this);
-    //     this.touchCount=0;
-    // }
-    // }
-    
-
-   // this.cardSelect();
   }
 
   initCard(card: Node, data) {
     if (this.node.children.length <= this.MaxChildCount) {
       this.node.addChild(card);
       card.name=this.currentCardInBlock.toString();
-    //   card.setPosition(
-    //     0,
-    //     this.currentCardInBlock * -GameConst.Card_Position_Diff
-    //   );
-
       card.getComponent(Card).setProperties(data);
       this.currentCardInBlock++;
     }
@@ -109,10 +73,6 @@ AddCard(card){
         console.log("position : ");
         this.node.getComponent(Layout).enabled=false;
         this.node.getComponent(Layout).enabled=true;
-        // card.setPosition(
-        //     0,
-        //     this.currentCardInBlock * -GameConst.Card_Position_Diff
-        //     );
            this.currentCardInBlock++;
     }
 }
@@ -169,33 +129,12 @@ return
 
         }
     }
-    // for (const [index, value] of this.node.children.entries()) {
-    //   //   await this.delay(.1);
-    //   value.setPosition(0, 0,0);
-    //   if (index == 3) {
-    //     console.log("last index", JSON.stringify( value.position));
-    //     value.setPosition(0, 0,0);
-    //     value.getComponent(Card).CardBack.active = true;    
-    //   }
-    // }
-  }
-
-  blockClicked() {
-        console.log("Clicked on block : ",name);
-     //   this.node.children[this.node.children.length-1].getComponent(Card).cardSelect();
-    
-  //  window.EventEmitter.emit("Card_Select", this.node, this);
-  }
-
-  removeCardFromBlock(card: Node) {
-    this.node.removeChild(card);
-    this.currentCardInBlock--;
+    this.onDestroy();
   }
 
 
   onDestroy(){
     this.node.off(Node.EventType.TOUCH_END, this.touchEnd, this);
-   window.EventEmitter.removeListener(GameConst.Game_Event.Block_Click,this.blockClicked ,this)
 
   }
 

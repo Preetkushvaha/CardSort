@@ -86,7 +86,7 @@ console.log("movindfdsfs");
       console.log("target position :", targetPosition);
     //  this.node.removeFromParent();
       tween(this.node)
-    .to(.5, { position: new Vec3(targetPosition) }, { easing: "sineIn" })
+    .to(.5, { position: new Vec3(targetPosition) })
     .start();
     console.log("target position Enddd:", targetPosition);
     this.scheduleOnce(()=>{

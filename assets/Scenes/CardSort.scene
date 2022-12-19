@@ -2062,7 +2062,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 200,
-      "height": 450
+      "height": 225
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2241,7 +2241,7 @@
         "__id__": 67
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 70
