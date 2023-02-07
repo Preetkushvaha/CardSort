@@ -76,7 +76,7 @@ AddCard(card){
            this.currentCardInBlock++;
     }
 }
-//************ */
+//************Check for card add to block or not */
   checkIsCardAddable(Color) {
     console.log("0000000000",this.node.children[this.node.children.length - 1].getComponent(Card).cardColor);
     console.log("Color: ",Color);
@@ -90,7 +90,7 @@ AddCard(card){
       return false;
     
   }
-//************* */
+//************* Check block is completed*/
   checkForBlockComplete(){
     let Color = [];
     if(this.node.children.length != this.MaxChildCount){
@@ -108,6 +108,7 @@ return
     Color = [];
     return false;
   }
+  ///***************check for all card have same value */
    areSame(arr)
   {
       // Put all array elements in a HashSet
@@ -117,7 +118,7 @@ return
       return (s.size == 1);
   }
    
- 
+ //************fold all card after complete block full with same color */
   async foldAllCard() {
 
       this.node.getComponent(Layout).enabled=false;
@@ -138,9 +139,4 @@ return
 
   }
 
-  //*********update */
-  update() {
-    if (this.node.children.length < this.MaxChildCount) {
-    }
-  }
 }

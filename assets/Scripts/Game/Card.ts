@@ -46,18 +46,7 @@ export class Card extends Component {
       iterator.string = data.value;
     }
   }
-  touchEnd(event) {
-    let location = event.touch.getLocation();
-  //  this.node.parent.name;
-  //  console.log("touch end  card : ", location);
-  //  window.EventEmitter.emit('Card_Select', this.node,this);
-  //window.EventEmitter.emit(GameConst.Game_Event.Block_Click, this.node.parent.name,this);
-
-    // this.cardSelect();
-  }
-  onDestroy() {
-    this.node.off(Node.EventType.TOUCH_CANCEL);
-  }
+ 
 
   cardSelect(isSelected) {
     console.log("Card : ",);
@@ -95,6 +84,4 @@ console.log("movindfdsfs");
   })
     
   }
-
-  update(dt) {}
 }
